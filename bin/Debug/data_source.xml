@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DocumentElement>
+  <NhuYeuPham>
+    <Id>1</Id>
+    <Tên>gạo nếp</Tên>
+    <Nhà_x0020_sản_x0020_xuất>tập đoàn Hoa mai</Nhà_x0020_sản_x0020_xuất>
+    <Giá>15000</Giá>
+    <Loại>0</Loại>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>2</Id>
+    <Tên>nước rửa tay khô</Tên>
+    <Nhà_x0020_sản_x0020_xuất>Coop-mark extra</Nhà_x0020_sản_x0020_xuất>
+    <Giá>27000</Giá>
+    <Loại>1</Loại>
+    <NSX>2021-06-12T00:00:00+07:00</NSX>
+    <HSD>2023-06-12T00:00:00+07:00</HSD>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>3</Id>
+    <Tên>thuốc hạ huyết áp OTiV 30VQ</Tên>
+    <Nhà_x0020_sản_x0020_xuất>công ty dược phẩm ECO</Nhà_x0020_sản_x0020_xuất>
+    <Giá>330000</Giá>
+    <Loại>3</Loại>
+    <NSX>2021-05-11T00:00:00+07:00</NSX>
+    <HSD>2023-05-11T00:00:00+07:00</HSD>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>5</Id>
+    <Tên>mì Kokomi đại 90g</Tên>
+    <Nhà_x0020_sản_x0020_xuất>Kokomi</Nhà_x0020_sản_x0020_xuất>
+    <Giá>4000</Giá>
+    <Loại>0</Loại>
+    <NSX>2021-07-06T00:00:00+07:00</NSX>
+    <HSD>2023-01-12T00:00:00+07:00</HSD>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>6</Id>
+    <Tên>ống lọc khí</Tên>
+    <Nhà_x0020_sản_x0020_xuất>công ty Rạng Đông</Nhà_x0020_sản_x0020_xuất>
+    <Giá>180000</Giá>
+    <Loại>2</Loại>
+    <NSX>2021-02-28T00:00:00+07:00</NSX>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>7</Id>
+    <Tên>dung dịch sát khuẩn GreenCross 70ml</Tên>
+    <Nhà_x0020_sản_x0020_xuất>Bách hóa xanh</Nhà_x0020_sản_x0020_xuất>
+    <Giá>37000</Giá>
+    <Loại>1</Loại>
+    <NSX>2020-12-10T00:00:00+07:00</NSX>
+    <HSD>2025-12-10T00:00:00+07:00</HSD>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>8</Id>
+    <Tên>chai nước rửa tay Lifebuoy 177ml</Tên>
+    <Nhà_x0020_sản_x0020_xuất>công ty Lifebouy</Nhà_x0020_sản_x0020_xuất>
+    <Giá>31000</Giá>
+    <Loại>1</Loại>
+    <NSX>2021-07-13T00:00:00+07:00</NSX>
+    <HSD>2024-06-11T00:00:00+07:00</HSD>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>9</Id>
+    <Tên>cháo gói Gấu đỏ</Tên>
+    <Nhà_x0020_sản_x0020_xuất>tập đoàn Acecook</Nhà_x0020_sản_x0020_xuất>
+    <Giá>3000</Giá>
+    <Loại>0</Loại>
+    <NSX>2020-11-12T00:00:00+07:00</NSX>
+    <HSD>2021-11-12T00:00:00+07:00</HSD>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>10</Id>
+    <Tên>Paracetamon 500mg hộp 10 vỉ</Tên>
+    <Nhà_x0020_sản_x0020_xuất>công ty dược phẩm ECO</Nhà_x0020_sản_x0020_xuất>
+    <Giá>25000</Giá>
+    <Loại>3</Loại>
+    <NSX>2021-06-12T00:00:00+07:00</NSX>
+    <HSD>2025-06-12T00:00:00+07:00</HSD>
+  </NhuYeuPham>
+</DocumentElement>
