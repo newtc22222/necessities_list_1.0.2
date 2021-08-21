@@ -4,15 +4,15 @@
     <Id>1</Id>
     <Tên>gạo nếp</Tên>
     <Nhà_x0020_sản_x0020_xuất>tập đoàn Hoa mai</Nhà_x0020_sản_x0020_xuất>
-    <Giá>15000</Giá>
-    <Loại>0</Loại>
+    <Loại>Thức_ăn</Loại>
+    <Giá>14600</Giá>
   </NhuYeuPham>
   <NhuYeuPham>
     <Id>2</Id>
     <Tên>nước rửa tay khô</Tên>
     <Nhà_x0020_sản_x0020_xuất>Coop-mark extra</Nhà_x0020_sản_x0020_xuất>
     <Giá>27000</Giá>
-    <Loại>1</Loại>
+    <Loại>Đồ_dùng_sinh_hoạt</Loại>
     <NSX>2021-06-12T00:00:00+07:00</NSX>
     <HSD>2023-06-12T00:00:00+07:00</HSD>
   </NhuYeuPham>
@@ -21,7 +21,7 @@
     <Tên>thuốc hạ huyết áp OTiV 30VQ</Tên>
     <Nhà_x0020_sản_x0020_xuất>công ty dược phẩm ECO</Nhà_x0020_sản_x0020_xuất>
     <Giá>330000</Giá>
-    <Loại>3</Loại>
+    <Loại>Dược_phẩm</Loại>
     <NSX>2021-05-11T00:00:00+07:00</NSX>
     <HSD>2023-05-11T00:00:00+07:00</HSD>
   </NhuYeuPham>
@@ -29,34 +29,34 @@
     <Id>5</Id>
     <Tên>mì Kokomi đại 90g</Tên>
     <Nhà_x0020_sản_x0020_xuất>Kokomi</Nhà_x0020_sản_x0020_xuất>
-    <Giá>4000</Giá>
-    <Loại>0</Loại>
-    <NSX>2021-07-06T00:00:00+07:00</NSX>
-    <HSD>2023-01-12T00:00:00+07:00</HSD>
+    <Loại>Thức_ăn</Loại>
+    <NSX>7/6/2021 12:00:00 AM</NSX>
+    <HSD>7/6/2023 12:00:00 AM</HSD>
+    <Giá>3600</Giá>
   </NhuYeuPham>
   <NhuYeuPham>
     <Id>6</Id>
     <Tên>ống lọc khí</Tên>
     <Nhà_x0020_sản_x0020_xuất>công ty Rạng Đông</Nhà_x0020_sản_x0020_xuất>
-    <Giá>180000</Giá>
-    <Loại>2</Loại>
-    <NSX>2021-02-28T00:00:00+07:00</NSX>
+    <Loại>Thiết_bị_hỗ_trợ</Loại>
+    <NSX>2/28/2021 12:00:00 AM</NSX>
+    <Giá>190000</Giá>
   </NhuYeuPham>
   <NhuYeuPham>
     <Id>7</Id>
     <Tên>dung dịch sát khuẩn GreenCross 70ml</Tên>
     <Nhà_x0020_sản_x0020_xuất>Bách hóa xanh</Nhà_x0020_sản_x0020_xuất>
-    <Giá>37000</Giá>
-    <Loại>1</Loại>
-    <NSX>2020-12-10T00:00:00+07:00</NSX>
-    <HSD>2025-12-10T00:00:00+07:00</HSD>
+    <Loại>Đồ_dùng_sinh_hoạt</Loại>
+    <NSX>12/10/2020 12:00:00 AM</NSX>
+    <HSD>12/10/2025 12:00:00 AM</HSD>
+    <Giá>36000</Giá>
   </NhuYeuPham>
   <NhuYeuPham>
     <Id>8</Id>
     <Tên>chai nước rửa tay Lifebuoy 177ml</Tên>
     <Nhà_x0020_sản_x0020_xuất>công ty Lifebouy</Nhà_x0020_sản_x0020_xuất>
     <Giá>31000</Giá>
-    <Loại>1</Loại>
+    <Loại>Đồ_dùng_sinh_hoạt</Loại>
     <NSX>2021-07-13T00:00:00+07:00</NSX>
     <HSD>2024-06-11T00:00:00+07:00</HSD>
   </NhuYeuPham>
@@ -65,7 +65,7 @@
     <Tên>cháo gói Gấu đỏ</Tên>
     <Nhà_x0020_sản_x0020_xuất>tập đoàn Acecook</Nhà_x0020_sản_x0020_xuất>
     <Giá>3000</Giá>
-    <Loại>0</Loại>
+    <Loại>Thực_phẩm</Loại>
     <NSX>2020-11-12T00:00:00+07:00</NSX>
     <HSD>2021-11-12T00:00:00+07:00</HSD>
   </NhuYeuPham>
@@ -73,9 +73,70 @@
     <Id>10</Id>
     <Tên>Paracetamon 500mg hộp 10 vỉ</Tên>
     <Nhà_x0020_sản_x0020_xuất>công ty dược phẩm ECO</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Dược_phẩm</Loại>
+    <NSX>6/12/2021 12:00:00 AM</NSX>
+    <HSD>6/12/2025 12:00:00 AM</HSD>
+    <Giá>26000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>202181819233</Id>
+    <Tên>202181819233</Tên>
+    <Nhà_x0020_sản_x0020_xuất>tập đoàn thực phẩm Vifon</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Thức_ăn</Loại>
+    <NSX>8/18/2021 12:00:00 AM</NSX>
+    <HSD>8/18/2023 12:00:00 AM</HSD>
+    <Giá>12000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>2021818194045</Id>
+    <Tên>Vitamin C sủi hộp 20 viên</Tên>
+    <Nhà_x0020_sản_x0020_xuất>công ty dược phẩm Rạng Đông</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Dược_phẩm</Loại>
+    <NSX>8/18/2021 12:00:00 AM</NSX>
+    <HSD>8/18/2024 12:00:00 AM</HSD>
+    <Giá>60000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>2021818194612</Id>
+    <Tên>kem đánh răng PS tuýp lớp</Tên>
+    <Nhà_x0020_sản_x0020_xuất>Bách hóa xanh</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Đồ_dùng_sinh_hoạt</Loại>
+    <NSX>8/18/2021 12:00:00 AM</NSX>
+    <HSD>8/18/2024 12:00:00 AM</HSD>
+    <Giá>28000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>2021818195127</Id>
+    <Tên>Chai tẩy rửa bồn cầu Vim loại lớn</Tên>
+    <Nhà_x0020_sản_x0020_xuất>Bách hóa xanh</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Đồ_dùng_sinh_hoạt</Loại>
+    <NSX>8/18/2021 12:00:00 AM</NSX>
+    <HSD>8/18/2025 12:00:00 AM</HSD>
+    <Giá>37000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>202181820649</Id>
+    <Tên>cháo gói Gấu đỏ</Tên>
+    <Nhà_x0020_sản_x0020_xuất>Coop-mark extra</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Thức_ăn</Loại>
+    <NSX>8/18/2021 12:00:00 AM</NSX>
+    <HSD>8/18/2022 12:00:00 AM</HSD>
+    <Giá>4000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>202182112342</Id>
+    <Tên>Bình oxi 5 lít</Tên>
+    <Nhà_x0020_sản_x0020_xuất>công ty khí nén Hòa Bình</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Thiết_bị_hỗ_trợ</Loại>
+    <NSX>8/21/2021 12:00:00 AM</NSX>
+    <HSD>8/21/2024 12:00:00 AM</HSD>
+    <Giá>240000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>2021821135821</Id>
+    <Tên>gạo lức</Tên>
+    <Nhà_x0020_sản_x0020_xuất>tập đoàn Hoa mai</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Thức_ăn</Loại>
     <Giá>25000</Giá>
-    <Loại>3</Loại>
-    <NSX>2021-06-12T00:00:00+07:00</NSX>
-    <HSD>2025-06-12T00:00:00+07:00</HSD>
   </NhuYeuPham>
 </DocumentElement>

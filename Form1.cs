@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace necessities_list
@@ -16,11 +10,9 @@ namespace necessities_list
     public partial class FormMain : Form
     {
         DataTable tb = new DataTable("NhuYeuPham");
+        BUS_NYP bus = new BUS_NYP();
+        Nhu_yeu_pham findNYP;
         int row_to_change;
-        string path = Application.StartupPath + "\\data_source.xml"; // lấy đường dẫn trong máy
-        private ListNhuYeuPham lstNYP;
-
-        public ListNhuYeuPham LstNYP { get => lstNYP; set => lstNYP = value; }
 
         public FormMain()
         {
@@ -35,11 +27,11 @@ namespace necessities_list
 
         void Make_table()
         {
-            tb.Columns.Add("Id", typeof(int));
+            tb.Columns.Add("Id", typeof(long));
             tb.Columns.Add("Tên", typeof(string));
             tb.Columns.Add("Nhà sản xuất", typeof(string));
             tb.Columns.Add("Giá", typeof(int));
-            tb.Columns.Add("Loại", typeof(TypeProduct));
+            tb.Columns.Add("Loại", typeof(string));
             tb.PrimaryKey = new DataColumn[] { tb.Columns["ID"] };
 
             //null value in column
@@ -51,157 +43,24 @@ namespace necessities_list
             tb.Columns.Add(HSD);
         }
 
-        void LoadData(List<Nhu_yeu_pham> lstNYPnew = null, IEnumerable<XElement> lst = null)
+        void LoadData(Nhu_yeu_pham NYP = null, int min = int.MinValue, int max = int.MaxValue)
         {
             tb.Rows.Clear();
-
-            if(lst == null)
+            if(NYP == null)
             {
-                tb.ReadXml(path);
-
-                foreach (DataRow dr in tb.Rows)
-                {
-                    DataRow row = tb.NewRow();
-                    row["Id"] = int.Parse(dr["Id"].ToString());
-                    row["Tên"] = dr["Tên"].ToString();
-
-                    row["NSX"] = dr.IsNull("NSX") ? (Object)DBNull.Value : Convert.ToDateTime(dr["NSX"].ToString());
-                    row["HSD"] = dr.IsNull("HSD") ? (Object)DBNull.Value : Convert.ToDateTime(dr["HSD"].ToString());
-                    
-                    row["Giá"] = dr["Giá"].ToString();
-                    row["Loại"] = dr["Loại"].ToString();
-                    row["Nhà sản xuất"] = dr["Nhà sản xuất"].ToString();
-                }
+                dgvMain.DataSource = bus.DataQuery(tb);
             }
             else
             {
-                tb.ReadXmlSchema(lst.ToString());
-
-                foreach (DataRow dr in tb.Rows)
-                {
-                    DataRow row = tb.NewRow();
-                    row["Id"] = int.Parse(dr["Id"].ToString());
-                    row["Tên"] = dr["Tên"].ToString();
-
-                    row["NSX"] = dr.IsNull("NSX") ? (Object)DBNull.Value : Convert.ToDateTime(dr["NSX"].ToString());
-                    row["HSD"] = dr.IsNull("HSD") ? (Object)DBNull.Value : Convert.ToDateTime(dr["HSD"].ToString());
-
-                    row["Giá"] = dr["Giá"].ToString();
-                    row["Loại"] = dr["Loại"].ToString();
-                    row["Nhà sản xuất"] = dr["Nhà sản xuất"].ToString();
-                }
+                dgvMain.DataSource = bus.DataQuery(tb, NYP, min, max);
             }
 
-
-            dgvMain.DataSource = tb;
             for (int i = 0; i < dgvMain.Columns.Count; i++)
             {
                 dgvMain.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
+            editToolStripMenuItem.Enabled = false;
         }
-
-        #region search_list
-        List<Nhu_yeu_pham> Name_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Name.ToLower().Contains(txtName.Text.ToLower())).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Type_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Tp.ToString() == cbType.Text).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Producer_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Producer.ToLower().Contains(txtProducer.Text.ToLower())).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Price_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Price >= (int)numUDFrom.Value*1000 && 
-                                                              p.Price <= (int)numUDTo.Value*1000).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Name_Type_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Name.ToLower().Contains(txtName.Text.ToLower()) &&
-                                                              p.Tp.ToString() == cbType.Text).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Name_Produce_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Name.ToLower().Contains(txtName.Text.ToLower()) &&
-                                                              p.Producer.ToLower().Contains(txtProducer.Text.ToLower())).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Name_Price_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Name.ToLower().Contains(txtName.Text.ToLower()) &&
-                                                              p.Price >= (int)numUDFrom.Value * 1000 &&
-                                                              p.Price <= (int)numUDTo.Value * 1000).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Name_Type_Produce_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Name.ToLower().Contains(txtName.Text.ToLower()) &&
-                                                              p.Tp.ToString() == cbType.Text &&
-                                                              p.Producer.ToLower().Contains(txtProducer.Text.ToLower())).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Name_Type_Price_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Name.ToLower().Contains(txtName.Text.ToLower()) &&
-                                                              p.Tp.ToString() == cbType.Text &&
-                                                              p.Price >= (int)numUDFrom.Value * 1000 &&
-                                                              p.Price <= (int)numUDTo.Value * 1000).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Name_Producer_Price_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Name.ToLower().Contains(txtName.Text.ToLower()) &&
-                                                              p.Producer.ToLower().Contains(txtProducer.Text.ToLower()) &&
-                                                              p.Price >= (int)numUDFrom.Value * 1000 &&
-                                                              p.Price <= (int)numUDTo.Value * 1000).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Type_Price_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Tp.ToString() == cbType.Text &&
-                                                              p.Price >= (int)numUDFrom.Value * 1000 &&
-                                                              p.Price <= (int)numUDTo.Value * 1000).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Type_Producer_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Tp.ToString() == cbType.Text &&
-                                                              p.Producer.ToLower().Contains(txtProducer.Text.ToLower())).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Type_Price_Producer_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Tp.ToString() == cbType.Text &&
-                                                              p.Producer.ToLower().Contains(txtProducer.Text.ToLower()) &&
-                                                              p.Price >= (int)numUDFrom.Value * 1000 &&
-                                                              p.Price <= (int)numUDTo.Value * 1000).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> Price_Producer_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Producer.ToLower().Contains(txtProducer.Text.ToLower()) &&
-                                                              p.Price >= (int)numUDFrom.Value * 1000 &&
-                                                              p.Price <= (int)numUDTo.Value * 1000).ToList();
-            return lst;
-        }
-        List<Nhu_yeu_pham> All_NYP()
-        {
-            List<Nhu_yeu_pham> lst = lstNYP.LstNYP.Where(p => p.Name.ToLower().Contains(txtName.Text.ToLower()) &&
-                                                              p.Tp.ToString() == cbType.Text &&
-                                                              p.Producer.ToLower().Contains(txtProducer.Text.ToLower()) &&
-                                                              p.Price >= (int)numUDFrom.Value * 1000 &&
-                                                              p.Price <= (int)numUDTo.Value * 1000).ToList();
-            return lst;
-        }
-        #endregion
 
         #region checkboxInfor
         private void chboxPrice_CheckedChanged(object sender, EventArgs e)
@@ -229,41 +88,67 @@ namespace necessities_list
         #region Control
         private void btnFind_Click(object sender, EventArgs e)
         {
-            List<Nhu_yeu_pham> result = new List<Nhu_yeu_pham>();
-
+            int min = int.MinValue;
+            int max = int.MaxValue;
             if (chbName.Checked)
             {
                 if (!chbType.Checked && !chbProducer.Checked && !chboxPrice.Checked)
                 {
-                    result = Name_NYP();
+                    findNYP = new Nhu_yeu_pham() { 
+                        Name = txtName.Text.ToLower() };
                 }
                 else if(chbType.Checked && !chbProducer.Checked && !chboxPrice.Checked)
                 {
-                    result = Name_Type_NYP();
+                    findNYP = new Nhu_yeu_pham() { 
+                        Name = txtName.Text.ToLower(),
+                        TypeProduct = cbType.Text };
                 }
                 else if (!chbType.Checked && chbProducer.Checked && !chboxPrice.Checked)
                 {
-                    result = Name_Produce_NYP();
+                    findNYP = new Nhu_yeu_pham() { 
+                        Name = txtName.Text.ToLower(),
+                        Producer = txtProducer.Text.ToLower() };
                 }
                 else if (!chbType.Checked && !chbProducer.Checked && chboxPrice.Checked)
                 {
-                    result = Name_Price_NYP();
+                    findNYP = new Nhu_yeu_pham() { 
+                        Name = txtName.Text.ToLower()};
+                    min = (int)numUDFrom.Value;
+                    max = (int)numUDTo.Value;
                 }
                 else if (chbType.Checked && chbProducer.Checked && !chboxPrice.Checked)
                 {
-                    result = Name_Type_Produce_NYP();
+                    findNYP = new Nhu_yeu_pham() { 
+                        Name = txtName.Text.ToLower(),
+                        TypeProduct = cbType.Text,
+                        Producer = txtProducer.Text.ToLower()};
                 }
                 else if(chbType.Checked && !chbProducer.Checked && chboxPrice.Checked)
                 {
-                    result = Name_Type_Price_NYP();
+                    findNYP = new Nhu_yeu_pham() {
+                        Name = txtName.Text.ToLower(),
+                        TypeProduct = cbType.Text};
+                    min = (int)numUDFrom.Value;
+                    max = (int)numUDTo.Value;
                 }
                 else if (!chbType.Checked && chbProducer.Checked && chboxPrice.Checked)
                 {
-                    result = Name_Producer_Price_NYP();
+                    findNYP = new Nhu_yeu_pham() {
+                        Name = txtName.Text.ToLower(),
+                        Producer = txtProducer.Text.ToLower()};
+                    min = (int)numUDFrom.Value;
+                    max = (int)numUDTo.Value;
                 }
                 else
                 {
-                    result = All_NYP();
+                    findNYP = new Nhu_yeu_pham()
+                    {
+                        Name = txtName.Text.ToLower(),
+                        TypeProduct = cbType.Text,
+                        Producer = txtProducer.Text.ToLower()
+                    };
+                    min = (int)numUDFrom.Value;
+                    max = (int)numUDTo.Value;
                 }
             }
             else
@@ -272,36 +157,65 @@ namespace necessities_list
                 {
                     if (!chbProducer.Checked && !chboxPrice.Checked)
                     {
-                        result = Type_NYP();
+
+                        findNYP = new Nhu_yeu_pham()
+                        {
+                            TypeProduct = cbType.Text,
+                        };
                     }
                     else if (chbProducer.Checked && !chboxPrice.Checked)
                     {
-                        result = Type_Producer_NYP(); 
+
+                        findNYP = new Nhu_yeu_pham()
+                        {
+                            TypeProduct = cbType.Text,
+                            Producer = txtProducer.Text.ToLower()
+                        };
                     }
                     else if (!chbProducer.Checked && chboxPrice.Checked)
                     {
-                        result = Type_Price_NYP();
+
+                        findNYP = new Nhu_yeu_pham()
+                        {
+                            TypeProduct = cbType.Text
+                        };
+                        min = (int)numUDFrom.Value * 1000;
+                        max = (int)numUDTo.Value * 1000;
                     }
                     else
                     {
-                        result = Type_Price_Producer_NYP();
+
+                        findNYP = new Nhu_yeu_pham()
+                        {
+                            TypeProduct = cbType.Text,
+                            Producer = txtProducer.Text.ToLower()
+                        };
+                        min = (int)numUDFrom.Value * 1000;
+                        max = (int)numUDTo.Value * 1000;
                     }
                 }
                 else
                 {
                     if (chbProducer.Checked)
                     {
-                        result = (chboxPrice.Checked) ? Price_Producer_NYP() : Producer_NYP();
+                        findNYP = new Nhu_yeu_pham()
+                        {
+                            Producer = txtProducer.Text.ToLower()
+                        };
                     }
-                    else result = Price_NYP();
+                    else {
+                        findNYP = new Nhu_yeu_pham();
+                        min = (int)numUDFrom.Value * 1000;
+                        max = (int)numUDTo.Value * 1000;
+                    }
                 }
             }
-            LoadData(result);
+            LoadData(findNYP, min, max);
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            LoadData();// lstNYP.LstNYP);
+            LoadData();
         }
 
         #region exit
@@ -331,21 +245,37 @@ namespace necessities_list
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool Add_more = false;
-            int id_edit = int.Parse(dgvMain.Rows[row_to_change].Cells[0].Value.ToString());
-            new Information(Add_more, id_edit).ShowDialog();
+
+            Nhu_yeu_pham NYP = new Nhu_yeu_pham()
+            {
+                Id = Convert.ToInt64(dgvMain.Rows[row_to_change].Cells[0].Value.ToString()),
+                Name = dgvMain.Rows[row_to_change].Cells[1].Value.ToString(),
+                Producer = dgvMain.Rows[row_to_change].Cells[2].Value.ToString(),
+                Price = Convert.ToInt32(dgvMain.Rows[row_to_change].Cells[3].Value.ToString()),
+                TypeProduct = dgvMain.Rows[row_to_change].Cells[4].Value.ToString()
+            };
+
+            if (dgvMain.Rows[row_to_change].Cells[5].Value.ToString() == "")
+                NYP.Date_of_manufacture = null;
+            else { NYP.Date_of_manufacture = (DateTime)dgvMain.Rows[row_to_change].Cells[5].Value; }
+
+            if (dgvMain.Rows[row_to_change].Cells[6].Value.ToString() == "")
+                NYP.Expiry = null;
+            else { NYP.Expiry = (DateTime)dgvMain.Rows[row_to_change].Cells[6].Value; }
+
+            new Information(Add_more, NYP).ShowDialog();
             LoadData();
         }
 
         private void delToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Bạn có thực sự muốn xóa thông tin có id là {row_to_change} không?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            long id_del = long.Parse(dgvMain.Rows[row_to_change].Cells[0].Value.ToString());
+            string nameNYP = dgvMain.Rows[row_to_change].Cells[1].Value.ToString();
+            if (MessageBox.Show($"Bạn có thực sự muốn xóa thông tin {nameNYP} không?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                XDocument xmlNYP = XDocument.Load(path);
-                XElement cNYP = xmlNYP.Descendants("NhuYeuPham").Where(c => c.Element("Id").Value.Equals(row_to_change.ToString())).FirstOrDefault();
-                cNYP.Remove();
-                xmlNYP.Save(path);
+                bus.Delete(id_del);
+                LoadData();
             }
-            LoadData();
         }
         private void inforToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -370,6 +300,7 @@ namespace necessities_list
         private void dgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             row_to_change = dgvMain.CurrentCell.RowIndex;
+            editToolStripMenuItem.Enabled = true;
             delToolStripMenuItem.Enabled = true;
         }
     }

@@ -9,3 +9,14 @@ D:\C#project\Phivo_New\code_winform\necessities_list\obj\Debug\necessities_list.
 D:\C#project\Phivo_New\code_winform\necessities_list\obj\Debug\necessities_list.csproj.CoreCompileInputs.cache
 D:\C#project\Phivo_New\code_winform\necessities_list\obj\Debug\necessities_list.exe
 D:\C#project\Phivo_New\code_winform\necessities_list\obj\Debug\necessities_list.pdb
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\bin\Debug\necessities_list.exe.config
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\bin\Debug\necessities_list.exe
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\bin\Debug\necessities_list.pdb
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\obj\Debug\necessities_list.csproj.AssemblyReference.cache
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\obj\Debug\necessities_list.FormMain.resources
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\obj\Debug\necessities_list.Information.resources
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\obj\Debug\necessities_list.Properties.Resources.resources
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\obj\Debug\necessities_list.csproj.GenerateResource.cache
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\obj\Debug\necessities_list.csproj.CoreCompileInputs.cache
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\obj\Debug\necessities_list.exe
+D:\C#project\Phivo_New\code_winform\necessities_list_1.0.2\obj\Debug\necessities_list.pdb

@@ -1,43 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace necessities_list
 {
     public partial class Information : Form
     {
-        string path = Application.StartupPath + "\\data_source.xml";
+        BUS_NYP bus = new BUS_NYP();
         bool add;
-        int ID_edit;
-        public Information(bool Add = true, int id_edit = int.MaxValue)
+        Nhu_yeu_pham nhuyeupham = null;
+
+        public Information(bool Add = true, Nhu_yeu_pham oldNYP = null)
         {
             InitializeComponent();
             add = Add;
-            ID_edit = id_edit;
+            nhuyeupham = oldNYP;
             List<string> type = new List<string>() { "Thức_ăn", "Đồ_dùng_sinh_hoạt", "Thiết_bị_hỗ_trợ", "Dược_phẩm", "Nước" };
             cbTypeProduct.DataSource = type;
 
             if(add == false)
             {
-                txtID.Text = ID_edit.ToString();
-                txtID.ReadOnly = true;
-                XDocument xmlNYP = XDocument.Load(path);
-                XElement NYP = xmlNYP.Descendants("NhuYeuPham").Where(c => c.Element("Id").Value.Equals(ID_edit)).FirstOrDefault();
-                txtName.Text = NYP.Element("Tên").Value;
-                txtProducer.Text = NYP.Element("Nhà sản xuất").Value;
-                cbTypeProduct.Text = NYP.Element("Loại").Value;
+                txtID.Text = nhuyeupham.Id.ToString();
 
-                int price = int.Parse(NYP.Element("Giá").Value);
+                txtName.Text = nhuyeupham.Name;
+                txtProducer.Text = nhuyeupham.Producer;
+                cbTypeProduct.Text = nhuyeupham.TypeProduct;
+
+                int price = int.Parse(nhuyeupham.Price.ToString());
                 numUDMillions.Value = price / 1000000;
                 numUDThousands.Value = price / 1000 % 1000;
                 numUDCost.Value = price % 1000;
+
+                if(nhuyeupham.Date_of_manufacture == null)
+                {
+                    chbDoM.Checked = false;
+                }
+                else
+                {
+                    dtPickerDoM.Value = (DateTime)nhuyeupham.Date_of_manufacture;
+                }
+
+                if (nhuyeupham.Expiry == null)
+                {
+                    chbExp.Checked = false;
+                }
+                else
+                {
+                    dtPickerExp.Value = (DateTime)nhuyeupham.Expiry;
+                }
             }
             else
             {
-                txtID.ReadOnly = false;
+                string id_num = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() +
+                                DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
+
+                txtID.Text = id_num;
             }
         }
 
@@ -57,34 +74,8 @@ namespace necessities_list
             {
                 if (FullInfor())
                 {
-                    try
-                    {
-                        XDocument xmlNYP = XDocument.Load(path);
-                        XElement newNYP = new XElement("NhuYeuPham",
-                        new XElement("Id", txtID.Text),
-                        new XElement("Tên", txtName.Text),
-                        new XElement("Nhà_x0020_sản_x0020_xuất", txtProducer.Text),
-                        new XElement("Giá", txtPrice_String.Text.Replace(" ", string.Empty)),
-                        new XElement("Loại", cbTypeProduct.Text)
-                        );
-
-                        if (chbDoM.Checked)
-                        {
-                            newNYP.SetElementValue("NXS", dtPickerDoM.Value.ToString());
-                        }
-                        if (chbExp.Checked)
-                        {
-                            newNYP.SetElementValue("HSD", dtPickerExp.Value.ToString());
-                        }
-
-                        //xmlNYP.Element("NhuYeuPham").Add(newNYP);
-                        xmlNYP.Add(newNYP);
-                        xmlNYP.Save(path);
-                    }
-                    catch (Exception err)
-                    {
-                        MessageBox.Show($"Lỗi ID hoặc sự cố khác!\n" + err.Message);
-                    }
+                    bus.Add(TakeData());
+                    this.Close();
                 }
                 else { MessageBox.Show("Vui lòng điền đầy đủ thông tin!"); }
             }
@@ -92,28 +83,27 @@ namespace necessities_list
             {
                 if (FullInfor())
                 {
-                    try
+                    Nhu_yeu_pham newNYP = new Nhu_yeu_pham()
                     {
-                        XDocument xmlNYP = XDocument.Load(path);
-                        XElement newNYP = xmlNYP.Descendants("NhuYeuPham").Where(c => c.Element("Id").Value.Equals(ID_edit)).FirstOrDefault();
-                        newNYP.Element("Tên").Value = txtName.Text;
-                        newNYP.Element("Nhà sản xuất").Value = txtProducer.Text;
-                        newNYP.Element("Giá").Value = txtPrice_String.Text.Replace(" ", string.Empty);
-                        if (chbDoM.Checked)
-                        {
-                            newNYP.Element("NSX").Value = dtPickerDoM.Value.ToString();
-                        }
-                        if (chbExp.Checked)
-                        {
-                            newNYP.Element("HSD").Value = dtPickerExp.Value.ToString();
-                        }
-                        xmlNYP.Save(path);
+                        Id = nhuyeupham.Id,
+                        Name = txtName.Text,
+                        Producer = txtProducer.Text,
+                        TypeProduct = cbTypeProduct.Text,
+                        Price = int.Parse(txtPrice_String.Text.Replace(" ", string.Empty))
+                    };
 
-                    }
-                    catch (Exception err)
-                    {
-                        MessageBox.Show(err.Message);
-                    }
+                    if (chbDoM.Checked == true)
+                        newNYP.Date_of_manufacture = dtPickerDoM.Value;
+                    else
+                        newNYP.Date_of_manufacture = null;
+
+                    if (chbExp.Checked == true)
+                        newNYP.Expiry = dtPickerExp.Value;
+                    else
+                        newNYP.Expiry = null;
+
+                    bus.Edit(TakeData());
+                    this.Close();
                 }
                 else { MessageBox.Show("Vui lòng điền đầy đủ thông tin!"); }
             }
@@ -148,9 +138,33 @@ namespace necessities_list
 
         bool FullInfor()
         {
-            if (txtID.Text == null || txtName.Text == null || txtProducer.Text == null || cbTypeProduct.Text == null)
+            if (txtID.Text == "" || txtName.Text == "" || txtProducer.Text == "" || cbTypeProduct.Text == "")
                 return false;
             return true;
+        }
+
+        Nhu_yeu_pham TakeData()
+        {
+            Nhu_yeu_pham newNYP = new Nhu_yeu_pham()
+            {
+                Id = long.Parse(txtID.Text),
+                Name = txtName.Text,
+                Producer = txtProducer.Text,
+                TypeProduct = cbTypeProduct.Text,
+                Price = int.Parse(txtPrice_String.Text.Replace(" ", string.Empty))
+            };
+
+            if (chbDoM.Checked)
+                newNYP.Date_of_manufacture = dtPickerDoM.Value.Date;
+            else
+                newNYP.Date_of_manufacture = null;
+
+            if (chbExp.Checked)
+                newNYP.Expiry = dtPickerExp.Value.Date;
+            else
+                newNYP.Expiry = null;
+
+            return newNYP;
         }
     }
 }
