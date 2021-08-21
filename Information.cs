@@ -83,25 +83,6 @@ namespace necessities_list
             {
                 if (FullInfor())
                 {
-                    Nhu_yeu_pham newNYP = new Nhu_yeu_pham()
-                    {
-                        Id = nhuyeupham.Id,
-                        Name = txtName.Text,
-                        Producer = txtProducer.Text,
-                        TypeProduct = cbTypeProduct.Text,
-                        Price = int.Parse(txtPrice_String.Text.Replace(" ", string.Empty))
-                    };
-
-                    if (chbDoM.Checked == true)
-                        newNYP.Date_of_manufacture = dtPickerDoM.Value;
-                    else
-                        newNYP.Date_of_manufacture = null;
-
-                    if (chbExp.Checked == true)
-                        newNYP.Expiry = dtPickerExp.Value;
-                    else
-                        newNYP.Expiry = null;
-
                     bus.Edit(TakeData());
                     this.Close();
                 }

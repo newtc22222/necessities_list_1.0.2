@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace necessities_list
 {
@@ -60,6 +59,7 @@ namespace necessities_list
                 dgvMain.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             editToolStripMenuItem.Enabled = false;
+            delToolStripMenuItem.Enabled = false;
         }
 
         #region checkboxInfor

@@ -109,6 +109,7 @@ namespace necessities_list
             this.btnExit.Size = new System.Drawing.Size(93, 32);
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "Thoát";
+            this.toolTip.SetToolTip(this.btnExit, "thoát khỏi chương trình");
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -120,6 +121,7 @@ namespace necessities_list
             this.btnLoad.Size = new System.Drawing.Size(93, 32);
             this.btnLoad.TabIndex = 1;
             this.btnLoad.Text = "Tải lại";
+            this.toolTip.SetToolTip(this.btnLoad, "xem lại dữ liệu gốc");
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
@@ -131,6 +133,7 @@ namespace necessities_list
             this.btnFind.Size = new System.Drawing.Size(93, 32);
             this.btnFind.TabIndex = 0;
             this.btnFind.Text = "Tìm";
+            this.toolTip.SetToolTip(this.btnFind, "tìm sản phẩm phù hợp");
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
@@ -165,6 +168,7 @@ namespace necessities_list
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm thông tin";
+            this.toolTip.SetToolTip(this.groupBox1, "tùy chọn thông tin muốn tìm");
             // 
             // chboxPrice
             // 
@@ -372,6 +376,7 @@ namespace necessities_list
             this.addToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Thêm";
+            this.addToolStripMenuItem.ToolTipText = "thêm sản phẩm";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
@@ -381,6 +386,7 @@ namespace necessities_list
             this.editToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editToolStripMenuItem.Text = "Sửa";
+            this.editToolStripMenuItem.ToolTipText = "sửa sản phẩm đang chọn";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // delToolStripMenuItem
@@ -390,6 +396,7 @@ namespace necessities_list
             this.delToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete)));
             this.delToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.delToolStripMenuItem.Text = "Xóa";
+            this.delToolStripMenuItem.ToolTipText = "xóa sản phẩm đang chọn";
             this.delToolStripMenuItem.Click += new System.EventHandler(this.delToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
@@ -415,27 +422,27 @@ namespace necessities_list
             this.inforToolStripMenuItem,
             this.zaloToolStripMenuItem});
             this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
-            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.websiteToolStripMenuItem.Text = "Trang web";
             // 
             // inforToolStripMenuItem
             // 
             this.inforToolStripMenuItem.Name = "inforToolStripMenuItem";
-            this.inforToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.inforToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.inforToolStripMenuItem.Text = "Infor";
             this.inforToolStripMenuItem.Click += new System.EventHandler(this.inforToolStripMenuItem_Click);
             // 
             // zaloToolStripMenuItem
             // 
             this.zaloToolStripMenuItem.Name = "zaloToolStripMenuItem";
-            this.zaloToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.zaloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zaloToolStripMenuItem.Text = "Zalo";
             this.zaloToolStripMenuItem.Click += new System.EventHandler(this.zaloToolStripMenuItem_Click);
             // 
             // productToolStripMenuItem
             // 
             this.productToolStripMenuItem.Name = "productToolStripMenuItem";
-            this.productToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.productToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productToolStripMenuItem.Text = "Sản phẩm";
             this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 

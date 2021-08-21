@@ -128,6 +128,7 @@ namespace necessities_list
             this.numUDCost.Name = "numUDCost";
             this.numUDCost.Size = new System.Drawing.Size(80, 22);
             this.numUDCost.TabIndex = 16;
+            this.toolTipInfor.SetToolTip(this.numUDCost, "tùy chỉnh trị giá sản phẩm");
             this.numUDCost.ValueChanged += new System.EventHandler(this.numUDMillions_ValueChanged);
             // 
             // numUDThousands
@@ -142,6 +143,7 @@ namespace necessities_list
             this.numUDThousands.Name = "numUDThousands";
             this.numUDThousands.Size = new System.Drawing.Size(82, 22);
             this.numUDThousands.TabIndex = 15;
+            this.toolTipInfor.SetToolTip(this.numUDThousands, "tùy chỉnh trị giá sản phẩm");
             this.numUDThousands.ValueChanged += new System.EventHandler(this.numUDMillions_ValueChanged);
             // 
             // numUDMillions
@@ -156,6 +158,7 @@ namespace necessities_list
             this.numUDMillions.Name = "numUDMillions";
             this.numUDMillions.Size = new System.Drawing.Size(76, 22);
             this.numUDMillions.TabIndex = 14;
+            this.toolTipInfor.SetToolTip(this.numUDMillions, "tùy chỉnh trị giá sản phẩm");
             this.numUDMillions.ValueChanged += new System.EventHandler(this.numUDMillions_ValueChanged);
             // 
             // panel4
@@ -313,9 +316,10 @@ namespace necessities_list
             this.txtID.Location = new System.Drawing.Point(130, 9);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(119, 22);
+            this.txtID.Size = new System.Drawing.Size(233, 22);
             this.txtID.TabIndex = 1;
-            this.toolTipInfor.SetToolTip(this.txtID, "Mã sản phẩm phải hạn chế trường hợp trùng");
+            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTipInfor.SetToolTip(this.txtID, "Mã sản phẩm sẽ được chỉnh tự động");
             // 
             // lblId
             // 
