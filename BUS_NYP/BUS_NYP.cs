@@ -113,7 +113,7 @@ namespace necessities_list
 
         public void Delete(long id)
         {
-            XmlNode nyp = root.SelectSingleNode($"NhuYeuPham[Id = '{id}'");
+            XmlNode nyp = root.SelectSingleNode($"NhuYeuPham[Id = '{id}']");
             if(nyp != null)
             {
                 root.RemoveChild(nyp);
