@@ -95,7 +95,7 @@
     <Loại>Đồ_dùng_sinh_hoạt</Loại>
     <NSX>8/18/2021 12:00:00 AM</NSX>
     <HSD>8/18/2024 12:00:00 AM</HSD>
-    <Giá>28000</Giá>
+    <Giá>29000</Giá>
   </NhuYeuPham>
   <NhuYeuPham>
     <Id>2021818195127</Id>
@@ -130,5 +130,30 @@
     <Nhà_x0020_sản_x0020_xuất>tập đoàn Hoa mai</Nhà_x0020_sản_x0020_xuất>
     <Loại>Thức_ăn</Loại>
     <Giá>25000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>202191081154</Id>
+    <Tên>Kem đánh răng Congate tuýp lớn</Tên>
+    <Nhà_x0020_sản_x0020_xuất>Bách hóa xanh</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Đồ_dùng_sinh_hoạt</Loại>
+    <NSX>9/10/2021 12:00:00 AM</NSX>
+    <HSD>9/10/2024 12:00:00 AM</HSD>
+    <Giá>30000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>202191081357</Id>
+    <Tên>Bình gas mini namilux</Tên>
+    <Nhà_x0020_sản_x0020_xuất>NaMiLux</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Thiết_bị_hỗ_trợ</Loại>
+    <NSX>9/10/2021 12:00:00 AM</NSX>
+    <Giá>24000</Giá>
+  </NhuYeuPham>
+  <NhuYeuPham>
+    <Id>202191081537</Id>
+    <Tên>gạo sóc Thái</Tên>
+    <Nhà_x0020_sản_x0020_xuất>tập đoàn Hoa Mai</Nhà_x0020_sản_x0020_xuất>
+    <Loại>Thức_ăn</Loại>
+    <HSD>10/10/2021 12:00:00 AM</HSD>
+    <Giá>17000</Giá>
   </NhuYeuPham>
 </DocumentElement>

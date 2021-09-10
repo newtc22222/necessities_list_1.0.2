@@ -88,8 +88,10 @@ namespace necessities_list
         #region Control
         private void btnFind_Click(object sender, EventArgs e)
         {
-            int min = int.MinValue;
-            int max = int.MaxValue;
+            int default_min = int.MinValue;
+            int default_max = int.MaxValue;
+            int min = (int)numUDFrom.Value * 1000;
+            int max = (int)numUDTo.Value * 1000;
             if (chbName.Checked)
             {
                 if (!chbType.Checked && !chbProducer.Checked && !chboxPrice.Checked)
@@ -113,8 +115,8 @@ namespace necessities_list
                 {
                     findNYP = new Nhu_yeu_pham() { 
                         Name = txtName.Text.ToLower()};
-                    min = (int)numUDFrom.Value;
-                    max = (int)numUDTo.Value;
+                    default_min = min;
+                    default_max = max;
                 }
                 else if (chbType.Checked && chbProducer.Checked && !chboxPrice.Checked)
                 {
@@ -128,16 +130,16 @@ namespace necessities_list
                     findNYP = new Nhu_yeu_pham() {
                         Name = txtName.Text.ToLower(),
                         TypeProduct = cbType.Text};
-                    min = (int)numUDFrom.Value;
-                    max = (int)numUDTo.Value;
+                    default_min = min;
+                    default_max = max;
                 }
                 else if (!chbType.Checked && chbProducer.Checked && chboxPrice.Checked)
                 {
                     findNYP = new Nhu_yeu_pham() {
                         Name = txtName.Text.ToLower(),
                         Producer = txtProducer.Text.ToLower()};
-                    min = (int)numUDFrom.Value;
-                    max = (int)numUDTo.Value;
+                    default_min = min;
+                    default_max = max;
                 }
                 else
                 {
@@ -147,8 +149,8 @@ namespace necessities_list
                         TypeProduct = cbType.Text,
                         Producer = txtProducer.Text.ToLower()
                     };
-                    min = (int)numUDFrom.Value;
-                    max = (int)numUDTo.Value;
+                    default_min = min;
+                    default_max = max;
                 }
             }
             else
@@ -179,8 +181,8 @@ namespace necessities_list
                         {
                             TypeProduct = cbType.Text
                         };
-                        min = (int)numUDFrom.Value * 1000;
-                        max = (int)numUDTo.Value * 1000;
+                        default_min = min;
+                        default_max = max;
                     }
                     else
                     {
@@ -190,8 +192,8 @@ namespace necessities_list
                             TypeProduct = cbType.Text,
                             Producer = txtProducer.Text.ToLower()
                         };
-                        min = (int)numUDFrom.Value * 1000;
-                        max = (int)numUDTo.Value * 1000;
+                        default_min = min;
+                        default_max = max;
                     }
                 }
                 else
@@ -202,15 +204,20 @@ namespace necessities_list
                         {
                             Producer = txtProducer.Text.ToLower()
                         };
+                        if (chboxPrice.Checked)
+                        {
+                            default_min = min;
+                            default_max = max;
+                        }
                     }
                     else {
                         findNYP = new Nhu_yeu_pham();
-                        min = (int)numUDFrom.Value * 1000;
-                        max = (int)numUDTo.Value * 1000;
+                        default_min = min;
+                        default_max = max; ;
                     }
                 }
             }
-            LoadData(findNYP, min, max);
+            LoadData(findNYP, default_min, default_max);
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
