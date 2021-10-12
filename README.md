@@ -11,7 +11,7 @@
     + Tên sản phẩm (contain)
     + Nhà sản xuất (contain)
     + Giá (from -> to)
-    + Hạn sử dụng (date)
+    + Loại (lựa chọn từ comboBox)
 # Mô hình lưu trữ và tìm kiếm:
   - Lưu trữ: Node to XML
   - Tìm kiếm: linQ to XML -> table
